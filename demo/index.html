@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+
+  <style>
+    video {
+        display: block; 
+        margin: 0 auto; 
+    }
+</style>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="data:,">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+  <button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  
+
+  </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">TimeColor: Flexible Reference Colorization via Temporal-Channel Concatenation</h1>
+            <div class="column is-full_width">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <video width="800" height="450" controls>
+    <source src="demo_video_compressed.mp4" type="video/mp4">
+
+  </video>
+  <div class="has-text-centered">
+  🎵 For the best viewing experience, go full screen and turn up your volume 🎵
+  </div>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Colorization in animation remains labor-intensive task. Existing automatic approaches typically support only a single reference, often restricted to the colored first frame. We present TimeColor, a Diffusion-Transformer-based sketched video colorization system that accepts a flexible number and variety of references with fixed parameter count. Unlike methods tied to a single first-frame exemplar, TimeColor ingests a variable-size bank of colored image references, including the first frame, arbitrary frames, or per-subject character sheets, and employs temporal-channel concatenation with custom RoPE indexing across modalities to achieve accurate per-subject colorization. During training, we further encourage per-subject correspondence with a latent identity map that provides spatially localized guidance, reducing cross-subject leakage while avoiding channel blow-up. Evaluated on the SAKUGA-42M test set using SSIM, PSNR, LPIPS, FVD, and FID, TimeColor attains higher colorization quality and temporal consistency than prior baselines across diverse reference types.
+          </p>
+         
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3" style="margin-bottom: 24px;">Source Code, paper, and other details are coming pretty soon. Please stay tuned!</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <!-- Animation. -->
+  <div class="columns is-centered" id="limitation">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Disclaimer</h2>        
+      <div class="content has-text-justified">
+        <p>
+          All images, videos, and related materials on this page are provided exclusively for academic and research use. TimeColor is a research project and is not intended for commercial applications.
+        </p>
+      </div>
+</section> 
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/bconstantine/TimeColor" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="content has-text-centered">
+        <div class="content">
+          <p>
+            This website was modified from <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We appreciate for sharing this template!
+          </p>
+        </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
