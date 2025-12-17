@@ -53,6 +53,82 @@
             <h1 class="title is-1 publication-title">TimeColor: Flexible Reference Colorization via Temporal-Channel Concatenation</h1>
             <div class="column is-full_width">
             </div>
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a>CVPR 2025 Anonymous Submition (Paper ID: 10366)</a>
+              </span>
+            </div> -->
+            <div class="is-size-5 publication-authors">
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://www.linkedin.com/in/bryan-constantine/">Bryan Constantine Sadihin</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://yihao-meng.github.io/">Yihao Meng</a><sup>2</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.linkedin.com/in/michael-wang-301a43129/">Michael Hua Wang</a><sup>1</sup>,</span>
+                  <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=en">Matteo Jiahao Chen</a><sup>1</sup>,
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=en">Hang Su</a><sup>1</sup>,
+                </span>
+              </div>
+            </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+                <span class="author-block"><sup>2</sup>HKUST</span>
+              </div>
+              <div class="is-size-3 publication-authors">
+                <span class="author-block"></span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                </div>
+              </div> 
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <span class="link-block">
+                  <a href="#our_results_container"
+                     class="external-link button is-normal is-rounded">
+                    <span>Gallery</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#flexible_usage"
+                     class="external-link button is-normal is-rounded">
+                    <span>Flexible Usage</span>
+                  </a>
+                </span>          
+                
+                <span class="link-block">
+                  <a href="#comparison"
+                     class="external-link button is-normal is-rounded">
+                    <span>Comparisons</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#limitation"
+                     class="external-link button is-normal is-rounded">
+                    <span>Limitation</span>
+                  </a>
+                </span>
+              
+              </div>
+            </div>
 
           </div>
         </div>
@@ -73,51 +149,597 @@
 
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Colorization in animation remains labor-intensive task. Existing automatic approaches typically support only a single reference, often restricted to the colored first frame. We present TimeColor, a Diffusion-Transformer-based sketched video colorization system that accepts a flexible number and variety of references with fixed parameter count. Unlike methods tied to a single first-frame exemplar, TimeColor ingests a variable-size bank of colored image references, including the first frame, arbitrary frames, or per-subject character sheets, and employs temporal-channel concatenation with custom RoPE indexing across modalities to achieve accurate per-subject colorization. During training, we further encourage per-subject correspondence with a latent identity map that provides spatially localized guidance, reducing cross-subject leakage while avoiding channel blow-up. Evaluated on the SAKUGA-42M test set using SSIM, PSNR, LPIPS, FVD, and FID, TimeColor attains higher colorization quality and temporal consistency than prior baselines across diverse reference types.
-          </p>
-         
-          
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Despite abundant reusable references in animation production, existing colorization systems still rely on a single exemplar, often restricted to the same shot, limiting their ability to leverage non-starting frames, character sheets, and background references. We study sketched video colorization with heterogeneous, variable-count references. Given a sketch video and a set of references (first-frame, arbitrary-frame, character sheets, and background examples), our goal is to produce a colored video with identity-consistent colors across time and shots while keeping the parameter count fixed as the number of references grows. We introduce TimeColor, a Diffusion Transformer that uses sequence-level conditioning and attention’s native support for variable-length inputs to ingest a flexible set of references without increasing parameter count. With temporal concatenation, modality-specific disjoint RoPE indexing, and inter-reference masking between subjects, TimeColor reduces cross-subject interference and improves colorization accuracy. A simple three-stage curriculum (first-frame → arbitrary-frame → multi-reference) further stabilizes training. Evaluated on SAKUGA-42M across diverse single- and multi-reference settings, TimeColor achieves higher colorization quality than prior baseline methods. 
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
   </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3" style="margin-bottom: 24px;">Source Code, paper, and other details are coming pretty soon. Please stay tuned!</h2>
+  <!-- ===== Multi-Reference Gallery ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom:24px;">Gallery: Multi-Reference</h2>
+          <p class="is-size-6 has-text-grey">Stack flexible amount of subject and background references across time, colorize the entire scene.</p>
+        </div>
+      </div>
+
+      <style>
+        :root { --media-width: 400px; }
+        .triplet-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; justify-items:center; align-items:start; }
+        .triplet-header { font-weight:700; color:#222; text-align:center; margin-bottom:8px; }
+        .media-landscape { width:var(--media-width); aspect-ratio:3/2; height:auto; display:block; object-fit:cover; border-radius:10px; background:#000; }
+        .triplet-cell figure { margin:0; }
+        .triplet-row { margin-bottom:20px; }
+        .ref-grid { width:var(--media-width); display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; }
+        .ref-thumb { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:8px; display:block; background:#000; transition:transform 120ms ease-out; }
+        .ref-thumb:hover { transform:scale(1.02); }
+        @media (max-width:900px){ .triplet-grid{ grid-template-columns:1fr; } .ref-grid{ width:100%; } .media-landscape{ width:100%; } }
+      </style>
+
+      <div class="triplet-grid" style="margin-bottom:8px;">
+        <div class="triplet-header">References</div>
+        <div class="triplet-header">Lineart</div>
+        <div class="triplet-header">Result</div>
+      </div>
+
+      <div id="triplet-rows-multiref-non-sakuga"></div>
+      <div id="triplet-rows-multiref"></div>
+
+      <script>
+        const multiRefItemsNonSakuga = [
+          { refs:["video_files/multireferences/stage2_case7_57_0.png","video_files/multireferences/stage2_case7_57_1.png"], lineart:"video_files/sketch/stage2_case7_57.mp4", result:"video_files/stage2/case7_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case9_49_0.png","video_files/multireferences/stage2_case9_49_1.png"], lineart:"video_files/sketch/stage2_case9_49.mp4", result:"video_files/stage2/case9_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case10_49_0.png","video_files/multireferences/stage2_case10_49_1.png",,"video_files/multireferences/stage2_case10_49_2.png"], lineart:"video_files/sketch/stage2_case10_49.mp4", result:"video_files/stage2/case10_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case11_49_0.png","video_files/multireferences/stage2_case11_49_1.png"], lineart:"video_files/sketch/stage2_case11_49.mp4", result:"video_files/stage2/case11_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case12_49_0.png","video_files/multireferences/stage2_case12_49_1.png", "video_files/multireferences/stage2_case12_49_2.png"], lineart:"video_files/sketch/stage2_case12_49.mp4", result:"video_files/stage2/case12_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case13_49_0.png","video_files/multireferences/stage2_case13_49_1.png"], lineart:"video_files/sketch/stage2_case13_49.mp4", result:"video_files/stage2/case13_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case14_49_0.png","video_files/multireferences/stage2_case14_49_1.png"], lineart:"video_files/sketch/stage2_case14_49.mp4", result:"video_files/stage2/case14_49.mp4" },
+          { refs:["video_files/multireferences/stage2_case2_17_0.png","video_files/multireferences/stage2_case2_17_1.png","video_files/multireferences/stage2_case2_17_2.png","video_files/multireferences/stage2_case2_17_3.png"], lineart:"video_files/sketch/stage2_case2_17.mp4", result:"video_files/stage2/case2_17.mp4" },
+          { refs:["video_files/multireferences/stage2_case3_25_0.png","video_files/multireferences/stage2_case3_25_1.png"], lineart:"video_files/sketch/stage2_case3_25.mp4", result:"video_files/stage2/case3_25.mp4" },
+          //{ refs:["video_files/multireferences/stage2_case4_17_0.png","video_files/multireferences/stage2_case4_17_1.png"], lineart:"video_files/sketch/stage2_case4_17.mp4", result:"video_files/stage2/case4_17.mp4" },
+          { refs:["video_files/multireferences/stage2_case5_33_0.png","video_files/multireferences/stage2_case5_33_1.png","video_files/multireferences/stage2_case5_33_2.png"], lineart:"video_files/sketch/stage2_case5_33.mp4", result:"video_files/stage2/case5_33.mp4" },
+          // { refs:["video_files/flexible_usage/refs/ex4_1.png","video_files/flexible_usage/refs/ex7.png"], lineart:"video_files/sketch/204192-Scene-4.mp4", result:"video_files/flexible_usage/result/ex7.mp4" },
+        ];
+        const multiRefItems = [
+          { refs:["video_files/multireferences/231676-Scene-1/reference_0.png","video_files/multireferences/231676-Scene-1/reference_1.png","video_files/multireferences/231676-Scene-1/reference_2.png"], lineart:"video_files/sketch/231676-Scene-1.mp4", result:"video_files/stage2/231676-Scene-1.mp4" },
+          { refs:["video_files/multireferences/145437-Scene-8/reference_0.png","video_files/multireferences/145437-Scene-8/reference_1.png"], lineart:"video_files/sketch/145437-Scene-8.mp4", result:"video_files/stage2/145437-Scene-8.mp4" },
+          { refs:["video_files/multireferences/49478-Scene-1/reference_0.png","video_files/multireferences/49478-Scene-1/reference_1.png","video_files/multireferences/49478-Scene-1/reference_2.png","video_files/multireferences/49478-Scene-1/reference_3.png"], lineart:"video_files/sketch/49478-Scene-1.mp4", result:"video_files/stage2/49478-Scene-1.mp4" },
+          // { refs:["video_files/multireferences/241863-Scene-2/reference_0.png","video_files/multireferences/241863-Scene-2/reference_1.png","video_files/multireferences/241863-Scene-2/reference_2.png"], lineart:"video_files/sketch/241863-Scene-2.mp4", result:"video_files/stage2/241863-Scene-2.mp4" },
+        ];
+        const mountA1 = document.getElementById("triplet-rows-multiref-non-sakuga");
+        const mountA2 = document.getElementById("triplet-rows-multiref");
+
+        function renderMultiRefRow(mount, {refs, lineart, result}) {
+          const row = document.createElement("div");
+          row.className = "triplet-grid triplet-row";
+          const refCell = document.createElement("div");
+          const grid = document.createElement("div");
+          grid.className = "ref-grid";
+          refs.forEach(src => {
+            const img = document.createElement("img");
+            img.className = "ref-thumb";
+            img.src = src;
+            img.alt = "Reference (720×480)";
+            grid.appendChild(img);
+          });
+          refCell.appendChild(grid);
+
+          const lineartCell = document.createElement("div");
+          lineartCell.className = "triplet-cell";
+          lineartCell.innerHTML = `<figure><video class="media-landscape" src="${lineart}" autoplay loop muted playsinline controls></video></figure>`;
+
+          const resultCell = document.createElement("div");
+          resultCell.className = "triplet-cell";
+          resultCell.innerHTML = `<figure><video class="media-landscape" src="${result}" autoplay loop muted playsinline controls></video></figure>`;
+
+          row.appendChild(refCell);
+          row.appendChild(lineartCell);
+          row.appendChild(resultCell);
+          mount.appendChild(row);
+        }
+
+        multiRefItemsNonSakuga.forEach(item => renderMultiRefRow(mountA1, item));
+        multiRefItems.forEach(item => renderMultiRefRow(mountA2, item));
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== Arbitrary Frame Gallery ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered" id="our_results_container">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom:24px;">Gallery: Arbitrary Frame Reference</h2>
+          <p class="is-size-6 has-text-grey">Use a single-frame reference from any moment to guide the colorization</p>
+        </div>
+      </div>
+
+      <style>
+        :root { --media-width: 400px; }
+        .triplet-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; justify-items:center; align-items:start; }
+        .triplet-header { font-weight:700; color:#222; text-align:center; margin-bottom:8px; }
+        .media-portrait { width:var(--media-width); aspect-ratio:3/2; height:auto; display:block; object-fit:cover; border-radius:10px; background:#000; }
+        .triplet-cell figure { margin:0; }
+        .triplet-row { margin-bottom:20px; }
+        @media (max-width:900px){ .triplet-grid{ grid-template-columns:1fr; } }
+      </style>
+
+      <div class="triplet-grid" style="margin-bottom:8px;">
+        <div class="triplet-header">Reference</div>
+        <div class="triplet-header">Lineart</div>
+        <div class="triplet-header">Result</div>
+      </div>
+
+      <div id="triplet-rows-non-sakuga"></div>
+      <div id="triplet-rows"></div>
+
+      <script>
+        const nonSakugaItems = [
+          
+          { ref:"video_files/full_frame/stage1_case3_49.jpg", lineart:"video_files/sketch/stage1_case3_49.mp4", result:"video_files/stage1onstage2/case3_49.mp4" },
+          { ref:"video_files/full_frame/stage1_case7_57.png", lineart:"video_files/sketch/stage1_case7_57.mp4", result:"video_files/stage1onstage2/case7_57.mp4" },
+          { ref:"video_files/full_frame/stage1_case10_33.png", lineart:"video_files/sketch/stage1_case10_33.mp4", result:"video_files/stage1onstage2/case10_33.mp4" },
+          { ref:"video_files/full_frame/stage1_case4_33.png", lineart:"video_files/sketch/stage1_case4_33.mp4", result:"video_files/stage1onstage2/case4_33.mp4" },
+          { ref:"video_files/full_frame/stage1_case8_57.png", lineart:"video_files/sketch/stage1_case8_57.mp4", result:"video_files/stage1onstage2/case8_57.mp4" },
+          { ref:"video_files/full_frame/stage1_case9_57.png", lineart:"video_files/sketch/stage1_case9_57.mp4", result:"video_files/stage1onstage2/case9_57.mp4" },
+          { ref:"video_files/full_frame/stage1_case0_45.jpg", lineart:"video_files/sketch/stage1_case0_45.mp4", result:"video_files/stage1onstage2/case0_45.mp4" },
+          { ref:"video_files/full_frame/stage1_case1_49.jpg", lineart:"video_files/sketch/stage1_case1_49.mp4", result:"video_files/stage1onstage2/case1_49.mp4" },
+        ];
+        const items = [
+          { ref:"video_files/full_frame/243058-Scene-11.png", lineart:"video_files/sketch/243058-Scene-11.mp4", result:"video_files/stage1onstage2/243058-Scene-11.mp4" },
+          { ref:"video_files/full_frame/135839-Scene-1.png", lineart:"video_files/sketch/135839-Scene-1.mp4", result:"video_files/stage1onstage2/135839-Scene-1.mp4" },
+          { ref:"video_files/full_frame/110367-Scene-24.png", lineart:"video_files/sketch/110367-Scene-24.mp4", result:"video_files/stage1onstage2/110367-Scene-24.mp4" },
+        ];
+        const mountB1 = document.getElementById("triplet-rows-non-sakuga");
+        const mountB2 = document.getElementById("triplet-rows");
+
+        function renderArbitraryRow(mount, {ref, lineart, result}) {
+          const row = document.createElement("div");
+          row.className = "triplet-grid triplet-row";
+
+          const refCell = document.createElement("div");
+          refCell.className = "triplet-cell";
+          refCell.innerHTML = `<figure><img class="media-portrait" src="${ref}" alt="Reference (480×720)"></figure>`;
+
+          const lineartCell = document.createElement("div");
+          lineartCell.className = "triplet-cell";
+          lineartCell.innerHTML = `<figure><video class="media-portrait video" src="${lineart}" autoplay loop muted playsinline controls></video></figure>`;
+
+          const resultCell = document.createElement("div");
+          resultCell.className = "triplet-cell";
+          resultCell.innerHTML = `<figure><video class="media-portrait video" src="${result}" autoplay loop muted playsinline controls></video></figure>`;
+
+          row.appendChild(refCell);
+          row.appendChild(lineartCell);
+          row.appendChild(resultCell);
+          mount.appendChild(row);
+        }
+
+        nonSakugaItems.forEach(item => renderArbitraryRow(mountB1, item));
+        items.forEach(item => renderArbitraryRow(mountB2, item));
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== Starting Frame Gallery ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered" id="our_results_container">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom:24px;">Gallery: Starting Frame Reference</h2>
+          <p class="is-size-6 has-text-grey">From the first frame, color the whole scene</p>
+        </div>
+      </div>
+
+      <style>
+        :root { --media-width: 400px; }
+        .triplet-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; justify-items:center; align-items:start; }
+        .triplet-header { font-weight:700; color:#222; text-align:center; margin-bottom:8px; }
+        .media-portrait { width:var(--media-width); aspect-ratio:3/2; height:auto; display:block; object-fit:cover; border-radius:10px; background:#000; }
+        .triplet-cell figure { margin:0; }
+        .triplet-row { margin-bottom:20px; }
+        @media (max-width:900px){ .triplet-grid{ grid-template-columns:1fr; } }
+      </style>
+
+      <div class="triplet-grid" style="margin-bottom:8px;">
+        <div class="triplet-header">Reference</div>
+        <div class="triplet-header">Lineart</div>
+        <div class="triplet-header">Result</div>
+      </div>
+
+      <div id="triplet-rows-first-frame-nonsakuga"></div>
+      <div id="triplet-rows-first-frame"></div>
+
+      <script>
+        const nonSakugaFirstFrameItems = [
+          { ref:"video_files/starting_frame/stage0_case8_49.png", lineart:"video_files/sketch/stage0_case8_49.mp4", result:"video_files/stage0onstage2/case8_49.mp4" },
+          { ref:"video_files/starting_frame/stage0_case0_45.png", lineart:"video_files/sketch/stage0_case0_45.mp4", result:"video_files/stage0onstage2/case0_45.mp4" },
+          { ref:"video_files/starting_frame/stage0_case2_45.png", lineart:"video_files/sketch/stage0_case2_45.mp4", result:"video_files/stage0onstage2/case2_45.mp4" },
+          { ref:"video_files/starting_frame/stage0_case7_49.png", lineart:"video_files/sketch/stage0_case7_49.mp4", result:"video_files/stage0onstage2/case7_49.mp4" },
+          { ref:"video_files/starting_frame/stage0_case3_49.png", lineart:"video_files/sketch/stage0_case3_49.mp4", result:"video_files/stage0onstage2/case3_49.mp4" },
+          { ref:"video_files/starting_frame/stage0_case4_33.png", lineart:"video_files/sketch/stage0_case4_33.mp4", result:"video_files/stage0onstage2/case4_33.mp4" },
+          { ref:"video_files/starting_frame/stage0_case6_49.png", lineart:"video_files/sketch/stage0_case6_49.mp4", result:"video_files/stage0onstage2/case6_49.mp4" },
+        ];
+        const firstFrameItems = [
+          { ref:"video_files/starting_frame/123983-Scene-5.png", lineart:"video_files/sketch/123983-Scene-5.mp4", result:"video_files/stage0onstage2/123983-Scene-5.mp4" },
+          { ref:"video_files/starting_frame/137718-Scene-10.png", lineart:"video_files/sketch/137718-Scene-10.mp4", result:"video_files/stage0onstage2/137718-Scene-10.mp4" },
+          { ref:"video_files/starting_frame/168919-Scene-5.png", lineart:"video_files/sketch/168919-Scene-5.mp4", result:"video_files/stage0onstage2/168919-Scene-5.mp4" },
+        ];
+        const mountC1 = document.getElementById("triplet-rows-first-frame-nonsakuga");
+        const mountC2 = document.getElementById("triplet-rows-first-frame");
+
+        function renderFirstFrameRow(mount, {ref, lineart, result}) {
+          const row = document.createElement("div");
+          row.className = "triplet-grid triplet-row";
+
+          const refCell = document.createElement("div");
+          refCell.className = "triplet-cell";
+          refCell.innerHTML = `<figure><img class="media-portrait" src="${ref}" alt="Reference (480×720)"></figure>`;
+
+          const lineartCell = document.createElement("div");
+          lineartCell.className = "triplet-cell";
+          lineartCell.innerHTML = `<figure><video class="media-portrait video" src="${lineart}" autoplay loop muted playsinline controls></video></figure>`;
+
+          const resultCell = document.createElement("div");
+          resultCell.className = "triplet-cell";
+          resultCell.innerHTML = `<figure><video class="media-portrait video" src="${result}" autoplay loop muted playsinline controls></video></figure>`;
+
+          row.appendChild(refCell);
+          row.appendChild(lineartCell);
+          row.appendChild(resultCell);
+          mount.appendChild(row);
+        }
+
+        nonSakugaFirstFrameItems.forEach(item => renderFirstFrameRow(mountC1, item));
+        firstFrameItems.forEach(item => renderFirstFrameRow(mountC2, item));
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== Flexible Usage ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom:24px;" id="flexible_usage">Flexible Usage</h2>
+          <p class="is-size-6 has-text-grey">Demonstrating reference/scene reusability with consistent 720×480 displays</p>
+        </div>
+      </div>
+
+      <style>
+        :root { --media-width: 400px; }
+        .triplet-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; justify-items:center; align-items:start; }
+        .triplet-header { font-weight:700; color:#222; text-align:center; margin-bottom:8px; min-height:1.4em; }
+        .triplet-cell figure { margin:0; }
+        .triplet-row { margin-bottom:20px; }
+        .media-landscape { width:var(--media-width); aspect-ratio:3/2; height:auto; display:block; object-fit:cover; border-radius:10px; background:#000; }
+        .ref-grid { width:var(--media-width); display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; }
+        .ref-grid.one { grid-template-columns:1fr; gap:0; }
+        .ref-thumb { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:8px; display:block; background:#000; transition:transform 120ms ease-out; }
+        .ref-thumb:hover { transform:scale(1.02); }
+        .subsection-title { font-weight:700; margin:24px 0 6px; }
+        @media (max-width:900px){ .triplet-grid{ grid-template-columns:1fr; } .ref-grid, .media-landscape{ width:100%; } }
+      </style>
+
+      <div class="subsection-title">Reuse References across scenes</div>
+      <div id="flex-one-ref"></div>
+
+      <div class="subsection-title">Tailor the references for current scene</div>
+      <div id="flex-one-sketch"></div>
+
+      <script>
+        const flexOneRefItems = [
+        {
+          refs: [
+            "video_files/flexible_usage/refs/ex0_0.png",
+            "video_files/flexible_usage/refs/ex0_1.png",
+            "video_files/flexible_usage/refs/ex1_1.png"
+          ],
+          lineart: "video_files/flexible_usage/sketch/ex0.mp4",
+          result: "video_files/flexible_usage/result/ex0.mp4",
+        },
+        {
+          refs: [
+            "video_files/flexible_usage/refs/ex1_0.png",
+            "video_files/flexible_usage/refs/ex1_1.png",
+          ],
+          lineart: "video_files/flexible_usage/sketch/ex1.mp4",
+          result: "video_files/flexible_usage/result/ex1.mp4",
+        },
+        {
+          refs: [
+            "video_files/flexible_usage/refs/ex2_0.png",
+            "video_files/flexible_usage/refs/ex1_1.png",
+          ],
+          lineart: "video_files/flexible_usage/sketch/ex2.mp4",
+          result: "video_files/flexible_usage/result/ex2.mp4",
+        },
+        {
+          refs: [
+            "video_files/flexible_usage/refs/ex3_0.png",
+            "video_files/flexible_usage/refs/ex1_1.png",
+          ],
+          lineart: "video_files/flexible_usage/sketch/ex3.mp4",
+          result: "video_files/flexible_usage/result/ex3.mp4",
+        },
+      ];
+
+        const flexOneSketchItems = [
+          { refs:["video_files/flexible_usage/refs/ex4_1.png","video_files/flexible_usage/refs/ex4_2.png"], sketch:"video_files/flexible_usage/sketch/ex4.mp4", result:"video_files/flexible_usage/result/ex4.mp4" },
+          { refs:["video_files/flexible_usage/refs/ex4_1.png","video_files/flexible_usage/refs/ex6.png"], sketch:"video_files/flexible_usage/sketch/ex4.mp4", result:"video_files/flexible_usage/result/ex6.mp4" },
+          { refs:["video_files/flexible_usage/refs/ex4_1.png","video_files/flexible_usage/refs/ex7.png"], sketch:"video_files/flexible_usage/sketch/ex4.mp4", result:"video_files/flexible_usage/result/ex7.mp4" },
+        ];
+
+        function makeRefGrid(refs) {
+          const grid = document.createElement("div");
+          grid.className = "ref-grid";
+          if (refs.length === 1) grid.classList.add("one");
+          refs.slice(0,4).forEach(src => {
+            const img = document.createElement("img");
+            img.className = "ref-thumb";
+            img.src = src;
+            img.alt = "Reference (720×480)";
+            grid.appendChild(img);
+          });
+          return grid;
+        }
+
+        const mountFlexA = document.getElementById("flex-one-ref");
+
+        // header (same style as your original triplet sections)
+        const hdrA = document.createElement("div");
+        hdrA.className = "triplet-grid";
+        hdrA.style.marginBottom = "8px";
+        hdrA.innerHTML = `<div class="triplet-header">References</div><div class="triplet-header">Sketch</div><div class="triplet-header">Result</div>`;
+        mountFlexA.appendChild(hdrA);
+
+        function renderFlexTripletRow(mount, { refs, lineart, result }) {
+          const row = document.createElement("div");
+          row.className = "triplet-grid triplet-row";
+
+          const refCell = document.createElement("div");
+          refCell.appendChild(makeRefGrid(refs));
+          row.appendChild(refCell);
+
+          const lineartCell = document.createElement("div");
+          lineartCell.className = "triplet-cell";
+          lineartCell.innerHTML = `<figure><video class="media-landscape" src="${lineart}" autoplay loop muted playsinline controls></video></figure>`;
+          row.appendChild(lineartCell);
+
+          const resultCell = document.createElement("div");
+          resultCell.className = "triplet-cell";
+          resultCell.innerHTML = `<figure><video class="media-landscape" src="${result}" autoplay loop muted playsinline controls></video></figure>`;
+          row.appendChild(resultCell);
+
+          mount.appendChild(row);
+        }
+
+        flexOneRefItems.forEach(item => renderFlexTripletRow(mountFlexA, item));
+
+        const mountFlexB = document.getElementById("flex-one-sketch");
+        const hdrB = document.createElement("div");
+        hdrB.className = "triplet-grid";
+        hdrB.style.marginBottom = "8px";
+        hdrB.innerHTML = `<div class="triplet-header">References</div><div class="triplet-header">Sketch</div><div class="triplet-header">Result</div>`;
+        mountFlexB.appendChild(hdrB);
+
+        flexOneSketchItems.forEach(it => {
+          const row = document.createElement("div");
+          row.className = "triplet-grid triplet-row";
+
+          const refCell = document.createElement("div");
+          refCell.appendChild(makeRefGrid(it.refs));
+          row.appendChild(refCell);
+
+          const sketchCell = document.createElement("div");
+          sketchCell.innerHTML = `<figure><video class="media-landscape" src="${it.sketch}" autoplay loop muted playsinline controls></video></figure>`;
+          row.appendChild(sketchCell);
+
+          const resultCell = document.createElement("div");
+          resultCell.innerHTML = `<figure><video class="media-landscape" src="${it.result}" autoplay loop muted playsinline controls></video></figure>`;
+          row.appendChild(resultCell);
+
+          mountFlexB.appendChild(row);
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== Comparison ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom:24px;" id="comparison">Comparison</h2>
+          <p class="is-size-6 has-text-grey">Methods: Ours, LVCD, ToonCrafter, AniDoc, LongAnimation, ToonComposer</p>
+        </div>
+      </div>
+
+      <style>
+        :root { --media-width: 400px; }
+        .triplet-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; justify-items:center; align-items:start; }
+        .triplet-header { font-weight:700; color:#222; text-align:center; margin-bottom:8px; min-height:1.4em; }
+        .triplet-cell figure { margin:0; }
+        .triplet-row { margin-bottom:20px; }
+        .media-landscape { width:var(--media-width); aspect-ratio:3/2; height:auto; display:block; object-fit:cover; border-radius:10px; background:#000; }
+        .ref-grid { width:var(--media-width); display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; }
+        .ref-grid.one { grid-template-columns:1fr; gap:0; }
+        .ref-thumb { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:8px; display:block; background:#000; transition:transform 120ms ease-out; }
+        .ref-grid.one .ref-thumb { border-radius:10px; }
+        .ref-thumb:hover { transform:scale(1.02); }
+        @media (max-width:900px){ .triplet-grid{ grid-template-columns:1fr; } .ref-grid, .media-landscape{ width:100%; } }
+      </style>
+
+      <div id="comparison-rows-3up"></div>
+
+      <script>
+        const compareSamples = [
+          { refs:["video_files/multireferences/stage2_case2_17_0.png","video_files/multireferences/stage2_case2_17_1.png","video_files/multireferences/stage2_case2_17_2.png","video_files/multireferences/stage2_case2_17_3.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/case2_17.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/case2_17.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/case2_17.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/case2_17.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/case2_17.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/case2_17.mp4"} ] },
+          { refs:["video_files/multireferences/stage2_case3_25_0.png","video_files/multireferences/stage2_case3_25_1.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/case3_25_sampled17.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/case3_25.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/case3_25.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/case3_25.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/case3_25.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/case3_25.mp4"} ] },
+          { refs:["video_files/multireferences/stage2_case5_33_0.png","video_files/multireferences/stage2_case5_33_1.png","video_files/multireferences/stage2_case5_33_2.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/case5_33.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/case5_33.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/case5_33.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/case5_33.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/case5_33.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/case5_33.mp4"} ] },
+          { refs:["video_files/multireferences/stage2_case4_17_0.png","video_files/multireferences/stage2_case4_17_1.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/case4_17.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/case4_17.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/case4_17.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/case4_17.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/case4_17.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/case4_17.mp4"} ] },
+          { refs:["video_files/multireferences/231676-Scene-1/reference_0.png","video_files/multireferences/231676-Scene-1/reference_1.png","video_files/multireferences/231676-Scene-1/reference_2.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/231676-Scene-1.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/231676-Scene-1.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/231676-Scene-1.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/231676-Scene-1.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/231676-Scene-1.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/231676-Scene-1.mp4"} ] },
+          { refs:["video_files/multireferences/145437-Scene-8/reference_0.png","video_files/multireferences/145437-Scene-8/reference_1.png"],
+            methods:[ {label:"Ours",src:"video_files/stage2/145437-Scene-8.mp4"}, {label:"LVCD",src:"video_files/lvcd/multiref/145437-Scene-8.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/multiref/145437-Scene-8.mp4"}, {label:"AniDoc",src:"video_files/anidoc/multiref/145437-Scene-8.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/multiref/145437-Scene-8.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/multiref/145437-Scene-8.mp4"} ] },
+          { refs:["video_files/full_frame/stage1_case4_33.png"],
+            methods:[ {label:"Ours",src:"video_files/stage1onstage2/case4_33_sampled17.mp4"}, {label:"LVCD",src:"video_files/lvcd/fullframeref/case4_33.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/fullframeref/case4_33.mp4"}, {label:"AniDoc",src:"video_files/anidoc/fullframeref/case4_33.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/fullframeref/case4_33.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/fullframeref/case4_33.mp4"} ] },
+          { refs:["video_files/full_frame/stage1_case3_49.jpg"],
+            methods:[ {label:"Ours",src:"video_files/stage1onstage2/case3_49_17.mp4"}, {label:"LVCD",src:"video_files/lvcd/fullframeref/case3_49.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/fullframeref/case3_49.mp4"}, {label:"AniDoc",src:"video_files/anidoc/fullframeref/case3_49.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/fullframeref/case3_49.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/fullframeref/case3_49.mp4"} ] },
+          { refs:["video_files/full_frame/243058-Scene-11.png"],
+            methods:[ {label:"Ours",src:"video_files/stage1onstage2/243058-Scene-11.mp4"}, {label:"LVCD",src:"video_files/lvcd/fullframeref/243058-Scene-11.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/fullframeref/243058-Scene-11.mp4"}, {label:"AniDoc",src:"video_files/anidoc/fullframeref/243058-Scene-11.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/fullframeref/243058-Scene-11.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/fullframeref/243058-Scene-11.mp4"} ] },
+          { refs:["video_files/full_frame/135839-Scene-1.png"],
+            methods:[ {label:"Ours",src:"video_files/stage1onstage2/135839-Scene-1.mp4"}, {label:"LVCD",src:"video_files/lvcd/fullframeref/135839-Scene-1.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/fullframeref/135839-Scene-1.mp4"}, {label:"AniDoc",src:"video_files/anidoc/fullframeref/135839-Scene-1.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/fullframeref/135839-Scene-1.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/fullframeref/135839-Scene-1.mp4"} ] },
+          { refs:["video_files/starting_frame/stage0_case6_49.png"],
+            methods:[ {label:"Ours",src:"video_files/stage0onstage2/case6_49_sampled17.mp4"}, {label:"LVCD",src:"video_files/lvcd/firstframeref/stage0_case6_49.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/firstframeref/stage0_case6_49.mp4"}, {label:"AniDoc",src:"video_files/anidoc/firstframeref/stage0_case6_49.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/firstframeref/stage0_case6_49.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/firstframeref/stage0_case6_49.mp4"} ] },
+          { refs:["video_files/starting_frame/123983-Scene-5.png"],
+            methods:[ {label:"Ours",src:"video_files/stage0onstage2/123983-Scene-5.mp4"}, {label:"LVCD",src:"video_files/lvcd/firstframeref/123983-Scene-5.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/firstframeref/123983-Scene-5.mp4"}, {label:"AniDoc",src:"video_files/anidoc/firstframeref/123983-Scene-5.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/firstframeref/123983-Scene-5.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/firstframeref/123983-Scene-5.mp4"} ] },
+          { refs:["video_files/starting_frame/161282-Scene-8.png"],
+            methods:[ {label:"Ours",src:"video_files/stage0onstage2/161282-Scene-8.mp4"}, {label:"LVCD",src:"video_files/lvcd/firstframeref/161282-Scene-8.mp4"},
+                      {label:"ToonCrafter",src:"video_files/tooncrafter/firstframeref/161282-Scene-8.mp4"}, {label:"AniDoc",src:"video_files/anidoc/firstframeref/161282-Scene-8.mp4"},
+                      {label:"LongAnimation",src:"video_files/longanimation/firstframeref/161282-Scene-8.mp4"}, {label:"ToonComposer",src:"video_files/tooncomposer/firstframeref/161282-Scene-8.mp4"} ] },
+        ];
+
+        function chunk(arr, size){ const out=[]; for(let i=0;i<arr.length;i+=size) out.push(arr.slice(i,i+size)); return out; }
+
+        const mountCompare = document.getElementById("comparison-rows-3up");
+
+        compareSamples.forEach(({ refs, methods }) => {
+          const pairs = chunk(methods, 2);
+          pairs.forEach((pair, idx) => {
+            const hdr = document.createElement("div");
+            hdr.className = "triplet-grid";
+            hdr.style.marginBottom = "8px";
+            hdr.innerHTML = `
+              <div class="triplet-header">${idx===0 ? "References" : ""}</div>
+              <div class="triplet-header">${pair[0] ? pair[0].label : ""}</div>
+              <div class="triplet-header">${pair[1] ? pair[1].label : ""}</div>`;
+            mountCompare.appendChild(hdr);
+
+            const row = document.createElement("div");
+            row.className = "triplet-grid triplet-row";
+
+            const refCell = document.createElement("div");
+            if (idx === 0) {
+              const refGrid = document.createElement("div");
+              refGrid.className = "ref-grid";
+              if (refs.length === 1) refGrid.classList.add("one");
+              refs.slice(0,4).forEach(src => {
+                const img = document.createElement("img");
+                img.className = "ref-thumb";
+                img.src = src;
+                img.alt = "Reference (720×480)";
+                refGrid.appendChild(img);
+              });
+              refCell.appendChild(refGrid);
+            } else {
+              refCell.innerHTML = `<div style="width:var(--media-width); aspect-ratio:3/2;"></div>`;
+            }
+            row.appendChild(refCell);
+
+            const m1 = document.createElement("div");
+            m1.className = "triplet-cell";
+            if (pair[0]?.src) m1.innerHTML = `<figure><video class="media-landscape" src="${pair[0].src}" autoplay loop muted playsinline controls></video></figure>`;
+            row.appendChild(m1);
+
+            const m2 = document.createElement("div");
+            m2.className = "triplet-cell";
+            if (pair[1]?.src) m2.innerHTML = `<figure><video class="media-landscape" src="${pair[1].src}" autoplay loop muted playsinline controls></video></figure>`;
+            row.appendChild(m2);
+
+            mountCompare.appendChild(row);
+          });
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== Limitation & Disclaimer ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered" id="limitation">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Limitation</h2>
+          <div class="content has-text-justified">
+            <p>
+              While our method supports flexible reference representations and varying reference counts, it has some limitations. First, as shown in the top row of \autoref{fig:limitation}, large viewpoint or scale gaps between the target and the reference can cause the model to misrecognize the subject and degrade color transfer. Second, as shown in the middle row of \autoref{fig:limitation}, the model can fail when the sketch encodes lighting such as glare or shadow borders that conflicts with the reference. In such cases, the model may ambiguously treat these cues as edge lines and may hallucinate spurious contours. This effect is reduced when the reference better matches the target pose and illumination.
+              
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+            <img src="video_files/limitation/Limitation.png" alt="Limitation diagram">
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              This suggests a future exploration where the model is trained with lighting-aware sketch cues. In animation practice, artists often use colored strokes, such as red for highlights and blue for shadows, to express lighting intent. Leveraging such data during training and testing could help distinguish shading from true boundaries. Alternatively, a preprocessing module that converts shading strokes into explicit lighting signals could provide scalable supervision and mitigate these failure cases.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-  <!-- Animation. -->
-  <div class="columns is-centered" id="limitation">
-    <div class="column is-full-width">
-      <h2 class="title is-3">Disclaimer</h2>        
-      <div class="content has-text-justified">
-        <p>
-          All images, videos, and related materials on this page are provided exclusively for academic and research use. TimeColor is a research project and is not intended for commercial applications.
-        </p>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Disclaimer</h2>
+          <div class="content has-text-justified">
+            <p>
+              All images, videos, and related materials on this page are provided exclusively for academic and research use. TimeColor is a research project and is not intended for commercial applications.
+            </p>
+          </div>
+        </div>
       </div>
-</section> 
+    </div>
+  </section>
 
 
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://github.com/bconstantine/TimeColor" class="external-link" disabled>
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -125,7 +747,7 @@
         <div class="content">
           <p>
             This website was modified from <a
-            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We appreciate for sharing this template!
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We appreciate for sharing this perfect template!
           </p>
         </div>
     </div>
