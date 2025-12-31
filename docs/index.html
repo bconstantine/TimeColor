@@ -119,13 +119,6 @@
                     <span>Comparisons</span>
                   </a>
                 </span>
-
-                <span class="link-block">
-                  <a href="#limitation"
-                     class="external-link button is-normal is-rounded">
-                    <span>Limitation</span>
-                  </a>
-                </span>
               
               </div>
             </div>
@@ -155,7 +148,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Despite abundant reusable references in animation production, existing colorization systems still rely on a single exemplar, often restricted to the same shot, limiting their ability to leverage non-starting frames, character sheets, and background references. We study sketched video colorization with heterogeneous, variable-count references. Given a sketch video and a set of references (first-frame, arbitrary-frame, character sheets, and background examples), our goal is to produce a colored video with identity-consistent colors across time and shots while keeping the parameter count fixed as the number of references grows. We introduce TimeColor, a Diffusion Transformer that uses sequence-level conditioning and attention’s native support for variable-length inputs to ingest a flexible set of references without increasing parameter count. With temporal concatenation, modality-specific disjoint RoPE indexing, and inter-reference masking between subjects, TimeColor reduces cross-subject interference and improves colorization accuracy. A simple three-stage curriculum (first-frame → arbitrary-frame → multi-reference) further stabilizes training. Evaluated on SAKUGA-42M across diverse single- and multi-reference settings, TimeColor achieves higher colorization quality than prior baseline methods. 
+              Most colorization models condition only on a single reference, typically the first frame of the scene. However, this approach ignores other sources of conditional data, such as character sheets, background images, or even arbitrary colorized frames. We propose TimeColor, a sketch-based video colorization model that supports heterogeneous, variable-count references with the use of explicit per-reference region assignment. TimeColor encodes references as additional latent frames which are concatenated temporally, permitting them to be processed concurrently in each diffusion step while keeping the model's parameter count fixed. TimeColor also uses spatiotemporal correspondence-masked attention to enforce subject-reference binding in addition to modality-disjoint RoPE indexing. These mechanisms prevent shortcutting and cross-identity palette leakage. Experiments on SAKUGA-42M under both single- and multi-reference protocols show that TimeColor consistently improves color fidelity, identity consistency, and temporal stability over prior baselines.
             </p>
           </div>
         </div>
@@ -693,29 +686,6 @@
   </section>
 
   <!-- ===== Limitation & Disclaimer ===== -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered" id="limitation">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Limitation</h2>
-          <div class="content has-text-justified">
-            <p>
-              While our method supports flexible reference representations and varying reference counts, it has some limitations. First, as shown in the top row of \autoref{fig:limitation}, large viewpoint or scale gaps between the target and the reference can cause the model to misrecognize the subject and degrade color transfer. Second, as shown in the middle row of \autoref{fig:limitation}, the model can fail when the sketch encodes lighting such as glare or shadow borders that conflicts with the reference. In such cases, the model may ambiguously treat these cues as edge lines and may hallucinate spurious contours. This effect is reduced when the reference better matches the target pose and illumination.
-              
-          </div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
-            <img src="video_files/limitation/Limitation.png" alt="Limitation diagram">
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              This suggests a future exploration where the model is trained with lighting-aware sketch cues. In animation practice, artists often use colored strokes, such as red for highlights and blue for shadows, to express lighting intent. Leveraging such data during training and testing could help distinguish shading from true boundaries. Alternatively, a preprocessing module that converts shading strokes into explicit lighting signals could provide scalable supervision and mitigate these failure cases.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
