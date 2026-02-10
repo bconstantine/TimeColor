@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "caption": "A determined ninja with spiky blonde hair and fierce red eyes channels intense energy, surrounded by a fiery aura.",
+      "sketch_control_path": "./examples/first_frame_ref/case1/sketch.mp4",
+      "reference_paths": [
+        "./examples/first_frame_ref/case1/ref.png"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 45,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/startingframe1.mp4"
+    },
+    {
+      "caption": "A vibrant bird with red and green feathers gracefully lands on a pale, outstretched hand against a serene, golden-hued landscape.",
+      "sketch_control_path": "./examples/first_frame_ref/case2/sketch.mp4",
+      "reference_paths": [
+        "./examples/first_frame_ref/case2/ref.png"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 49,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/startingframe2.mp4"
+    },
+    {
+      "caption": "A vibrant orange fish swims towards a glowing, swirling vortex of green and yellow, creating a sense of adventure and mystery.",
+      "sketch_control_path": "./examples/arbitrary_frame_ref/case1/sketch.mp4",
+      "reference_paths": [
+        "./examples/arbitrary_frame_ref/case1/ref.jpg"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 49,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/arbitraryframe1.mp4"
+    },
+    {
+      "caption": "An animated character with long black hair in a peach hoodie looks surprised against a clear blue sky.",
+      "sketch_control_path": "./examples/arbitrary_frame_ref/case2/sketch.mp4",
+      "reference_paths": [
+        "./examples/arbitrary_frame_ref/case2/ref.png"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 33,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/arbitraryframe2.mp4"
+    },
+    {
+      "caption": "A young man, wearing a light-colored t-shirt, sits in a sunlit room, looking thoughtfully to the side as he appears to be deep in contemplation. The gentle light streams through sheer curtains, highlighting his expressions of curiosity and introspection.",
+      "sketch_control_path": "./examples/multiref/case1/sketch.mp4",
+      "identity_mask_npz_path": "./examples/multiref/case1/mask.npz",
+      "reference_paths": [
+        "./examples/multiref/case1/ref0.png",
+        "./examples/multiref/case1/ref1.png"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 49,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/multiref1.mp4"
+    },
+    {
+      "caption": "A group of students in school uniforms is seated at desks in a classroom, focused intently on their work as sunlight filters in through large windows. One boy at the forefront appears to be deeply concentrated, writing as his classmates work on their assignments.",
+      "sketch_control_path": "./examples/multiref/case2/sketch.mp4",
+      "identity_mask_npz_path": "./examples/multiref/case2/mask.npz",
+      "reference_paths": [
+        "./examples/multiref/case2/ref0.png",
+        "./examples/multiref/case2/ref1.png",
+        "./examples/multiref/case2/ref2.png",
+        "./examples/multiref/case2/ref3.png"
+      ],
+      "num_inference_steps": 50,
+      "height": 480,
+      "width": 720,
+      "num_frames": 49,
+      "frame_rate": 15,
+      "custom_output_name": "./checkpoint/TimeColor-final/multiref2.mp4"
+    }
+    ]
+}
