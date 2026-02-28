@@ -42,12 +42,6 @@ from diffusers.utils import load_image, load_video
 
 
 def parallelize_transformer(pipe: DiffusionPipeline):
-    """
-    Single-GPU stub: keeps the original transformer.forward unchanged.
-
-    (Your original code overwrote forward() to do CFG-batch sharding + all_gather.
-     On single GPU, that logic is unnecessary.)
-    """
     return
 
 
@@ -195,12 +189,6 @@ def expand_token_spans_with_attention_pixel_pack_ontherun(
     strict_values: bool = True,
     main_key: str = "MAIN",
 ) -> Dict[str, object]:
-    """
-    Adds:
-    token_spans["PIXEL_PACK"] = {...}
-
-    Does NOT materialize PIXELS_REF_0..3 arrays up front.
-    """
     if main_key not in token_spans:
         raise KeyError(f"{main_key!r} not found in token_spans keys={list(token_spans.keys())}")
 
@@ -240,14 +228,6 @@ def build_attention_pixel_pack_from_attn_ids(
     strict_shape: bool = True,
     strict_values: bool = True,
 ) -> Dict[str, object]:
-    """
-    Same output contract as build_attention_pixel_pack(), but reads mask from
-    an in-memory attention-id mask instead of loading NPZ.
-
-    Expected attn_ids shape is (F, Hp, Wp) where Hp = H//2, Wp = W//2
-    (matching your existing code's convention).
-    """
-
     if isinstance(attn_ids, torch.Tensor):
         mask_arr = attn_ids.detach().to("cpu").numpy()
     else:
@@ -543,6 +523,7 @@ def run_sample(
             "generator": generator,
             "return_dict": True,
             "output_type": "pil",
+            "guidance_scale": guidance_scale,
         }
         generation_kwargs = get_non_null_items(generation_kwargs)
 
