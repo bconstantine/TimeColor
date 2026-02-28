@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES="5,6" torchrun --nproc_per_node=2 src/run_json_sample_cfgparallel.py \
+CUDA_VISIBLE_DEVICES="7,8" torchrun --nproc_per_node=2 src/run_json_sample_cfgparallel.py \
     --model-path "THUDM/CogVideoX-5b" \
     --cache-dir "./checkpoint/" \
     --transformer-path "./checkpoint/TimeColor-final/model_weights" \

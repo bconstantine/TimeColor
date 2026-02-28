@@ -1,4 +1,4 @@
-CUDA_DEVICES="3"
+CUDA_DEVICES="9"
 export CUDA_VISIBLE_DEVICES=$CUDA_DEVICES
 
 python src/run_json_sample_singlegpu.py \

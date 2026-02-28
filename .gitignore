@@ -2,3 +2,6 @@ checkpoint/**
 !checkpoint/sketch_generation/.gitkeep
 !checkpoint/TimeColor-final/.gitkeep
 !checkpoint/.gitkeep
+output
+.diffusers_backup
+**/__pycache__/
