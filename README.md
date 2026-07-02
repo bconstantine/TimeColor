@@ -55,7 +55,8 @@ conda activate timecolor_sketch_processing
 Specify your input and output folder inside the shell script. The script will convert all nested mp4 in the input folder, and output them in the output folder, following the same nested relative path.
 
 ## Checkpoints
-Our full weights can be downloaded [here](https://cloud.tsinghua.edu.cn/d/f99e8c98d9e144ddbaa4/). Paste the `model_weights/` folder into `checkpoint/TimeColor-final/`
+## Checkpoints
+Our full weights can be downloaded [here](https://cloud.tsinghua.edu.cn/d/f99e8c98d9e144ddbaa4/) or from the [backup Drive link](https://drive.google.com/drive/folders/1xfY3fJFYf1jsnuCF5c1HHTHwNIQwfIr8?usp=sharing). The backup contains a `.rar` archive of the `TimeColor-final/` folder. Paste the `model_weights/` folder into `checkpoint/TimeColor-final/`.
 ### ⚠️ Scope & Variability Limitation
 TimeColor is a research model trained with constrained compute and development resources for sketch-guided video colorization. As a generative system, outputs are stochastic and may vary across inputs and runs. To explore different outcomes, please adjust seed, steps, prompt, guidance_scale (CFG), and sketch/reference settings.
 
